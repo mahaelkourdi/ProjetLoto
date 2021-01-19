@@ -40,9 +40,7 @@ public class Connexion extends JFrame {
 	private JLabel lblSeConnecter;
 	private JLabel lblIcon;
 	
-	
-	private Image img_logo = new ImageIcon(("./src/iconlogin.png")).getImage();
-	
+		
 
 	/**
 	 * Launch the application.
@@ -164,12 +162,7 @@ public class Connexion extends JFrame {
 		lblSeConnecter.setBounds(43, 6, 63, 16);
 		panelSeConnecter.add(lblSeConnecter);
 		
-		lblIcon = new JLabel(" ");
-		lblIcon.setBounds(300, 4, 27, 16);
-		panelSeConnecter.add(lblIcon);
-		lblIcon.setIcon(new ImageIcon(img_logo));
-		lblIcon.setHorizontalAlignment(SwingConstants.CENTER);
-		
+	
 	
 		
 	}

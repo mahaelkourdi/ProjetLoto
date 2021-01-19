@@ -5,31 +5,64 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
+
+
 import java.awt.Font;
+
 import java.awt.Color;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.ActionEvent;
 
-public class PanelHome extends JPanel {
-
+public class PanelHome extends JPanel implements ActionListener{
+	
+	private JButton btnJouer ;
+	private JPanel panelJouer;
+	
 	/**
 	 * Create the panel.
 	 */
 	public PanelHome() {
-		setBounds(0,0,500,300);
+		panelJouer = new PanelJouer();
+		panelJouer.setBounds(0, 0, 700, 600);
+		panelJouer.setVisible(false);
+		
+		
+		
+		setBounds(0,0,590,300);
 		setLayout(null);
 		
-		JButton btnJouer = new JButton("Cliquer sur jouer");
-		btnJouer.setBounds(6, 24, 233, 23);
+		btnJouer = new JButton("Cliquer sur jouer");
+		btnJouer.setBounds(166, 104, 266, 29);
+		
 		add(btnJouer);
+		add(panelJouer);
+		btnJouer.addActionListener(this );
 		
-		JButton btnSmartLoto = new JButton("Smart-Loto");
-		btnSmartLoto.setForeground(new Color(168, 193, 197));
-		btnSmartLoto.setFont(new Font("SignPainter", Font.BOLD, 33));
-		btnSmartLoto.setBounds(32, 73, 429, 207);
-		add(btnSmartLoto);
-		
-
+	
+	
 	}
+	
+		
+	
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		
+		if (e.getSource() == btnJouer) {
+			btnJouer.setVisible(false);
+			panelJouer.setVisible(true);
+			
+		}
+	
+		
+	}
+	
+	
+
 
 }

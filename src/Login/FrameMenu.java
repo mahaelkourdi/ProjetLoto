@@ -24,8 +24,9 @@ import java.awt.Cursor;
 import javax.swing.JInternalFrame;
 import javax.swing.border.MatteBorder;
 import javax.swing.SwingConstants;
+import java.awt.Component;
 
-public class FrameMenu extends JFrame {
+public class FrameMenu extends JFrame implements Bouton {
 
 	private JPanel contentPane;
 	private JButton ButtonClose;
@@ -56,7 +57,7 @@ public class FrameMenu extends JFrame {
 	 */
 	public FrameMenu() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(200, 200,600,400 );
+		setBounds(200, 200,700,500 );
 		setUndecorated(true);
 		setLocationRelativeTo(null);
 		contentPane = new JPanel();
@@ -67,37 +68,33 @@ public class FrameMenu extends JFrame {
 		
 		
 		PanelHome= new PanelHome();
+		PanelHome.setBounds(0, 0, 700, 500);
 		PanelStatistique = new PanelStatistique();
+		PanelStatistique.setLocation(0, 0);
+		PanelStatistique.setAlignmentY(Component.CENTER_ALIGNMENT);
+		PanelStatistique.setAlignmentX(Component.CENTER_ALIGNMENT);
+		PanelStatistique.setSize(680, 480);
 		PanelHistorique = new PanelHistorique();
+		PanelHistorique.setSize(700, 500);
 		PanelReducteur = new PanelReducteur();
+		PanelReducteur.setSize(700, 500);
 		
 		
 		JPanel PanelHeader = new JPanel();
 		PanelHeader.setBackground(new Color(220, 220, 220));
-		PanelHeader.setBounds(0, 0, 600, 20);
+		PanelHeader.setBounds(0, 0, 700, 20);
 		contentPane.add(PanelHeader);
 		PanelHeader.setLayout(null);
 		
 		JButton buttonClose  = new JButton("X");
-		buttonClose.setBounds(570, 0, 30, 20);
+		buttonClose.setBounds(670, 0, 30, 20);
 		PanelHeader.add(buttonClose);
 		
 		JPanel panelConnexion = new JPanel();
 		panelConnexion.setBackground(new Color(238, 238, 238));
-		panelConnexion.setBounds(0, 19, 600, 41);
+		panelConnexion.setBounds(0, 19, 700, 41);
 		contentPane.add(panelConnexion);
 		panelConnexion.setLayout(null);
-		
-		JLabel lblDeconnexion = new JLabel("Déconnexion");
-		lblDeconnexion.setForeground(new Color(50, 205, 50));
-		lblDeconnexion.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
-		lblDeconnexion.setBounds(514, 0, 86, 16);
-		panelConnexion.add(lblDeconnexion);
-		
-		JLabel lblBonjour_1 = new JLabel("Bonjour");
-		lblBonjour_1.setForeground(new Color(0, 0, 0));
-		lblBonjour_1.setBounds(434, 0, 61, 16);
-		panelConnexion.add(lblBonjour_1);
 		
 		JLabel lblSmartLoto = new JLabel("Smart-Loto");
 		lblSmartLoto.setBounds(0, 6, 126, 41);
@@ -106,8 +103,29 @@ public class FrameMenu extends JFrame {
 		
 		panelConnexion.add(lblSmartLoto);
 		
+		JLabel lblProfil = new JLabel("Gérer mon compte");
+		lblProfil.setBounds(548, 6, 126, 29);
+		panelConnexion.add(lblProfil);
+		
+		JButton btnBonjour = new JButton("");
+		btnBonjour.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				if (e.getSource() == btnBonjour) {
+					FrameProfil f = new FrameProfil();
+					f.setVisible(true);
+					//setVisible(false);
+					
+				}
+			}
+		});
+		btnBonjour.setBounds(526, 6, 168, 29);
+		panelConnexion.add(btnBonjour);
+		
+		
+		
 		JPanel panelDashboard = new JPanel();
-		panelDashboard.setBounds(0, 59, 600, 49);
+		panelDashboard.setBounds(0, 59, 700, 49);
 		contentPane.add(panelDashboard);
 		panelDashboard.setLayout(null);
 		
@@ -140,7 +158,7 @@ public class FrameMenu extends JFrame {
 			
 		});
 
-		paneStatistique.setBounds(156, 6, 138, 37);
+		paneStatistique.setBounds(188, 6, 138, 37);
 		panelDashboard.add(paneStatistique);
 		paneStatistique.setLayout(null);
 		
@@ -160,7 +178,7 @@ public class FrameMenu extends JFrame {
 			
 			
 		});
-		paneHistorique.setBounds(306, 6, 138, 37);
+		paneHistorique.setBounds(355, 6, 138, 37);
 		panelDashboard.add(paneHistorique);
 		paneHistorique.setLayout(null);
 		
@@ -181,7 +199,7 @@ public class FrameMenu extends JFrame {
 			
 		});
 
-		paneReducteur.setBounds(456, 6, 138, 37);
+		paneReducteur.setBounds(542, 6, 138, 37);
 		panelDashboard.add(paneReducteur);
 		paneReducteur.setLayout(null);
 		
@@ -192,7 +210,9 @@ public class FrameMenu extends JFrame {
 		paneReducteur.add(lblSystmeRducteur);
 		
 		JPanel panelMainContent = new JPanel();
-		panelMainContent.setBounds(0, 105, 600, 295);
+		panelMainContent.setAlignmentY(Component.BOTTOM_ALIGNMENT);
+		panelMainContent.setAlignmentX(Component.RIGHT_ALIGNMENT);
+		panelMainContent.setBounds(0, 105, 700, 389);
 		contentPane.add(panelMainContent);
 		panelMainContent.setLayout(null);
 		
@@ -202,6 +222,7 @@ public class FrameMenu extends JFrame {
 		panelMainContent.add(PanelReducteur);
 
 		menuClicked(PanelHome);
+		
 		buttonClose.addMouseListener(new MouseAdapter() {
 			
 			@Override
