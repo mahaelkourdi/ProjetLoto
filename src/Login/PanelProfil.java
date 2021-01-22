@@ -12,7 +12,6 @@ public class PanelProfil extends JPanel {
 	public PanelProfil() {
 		setSize(700,500);
 		setLayout(null);
-		setBackground(Color.RED);
 
 	}
 

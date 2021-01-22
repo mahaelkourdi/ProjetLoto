@@ -33,12 +33,11 @@ public class Connexion extends JFrame {
 	private JPanel contentPaneAccueil;
 	private JTextField txtUsername;
 	private JPasswordField txtPassword;
-	private JPanel panelInscrire;
 	private JButton buttonClose;
 	private JTextPane txtSmartLoto;
-	private JPanel panelSeConnecter;
-	private JLabel lblSeConnecter;
 	private JLabel lblIcon;
+	private JButton btnInscrire;
+	private JButton btnSeConnecter;
 	
 		
 
@@ -130,18 +129,6 @@ public class Connexion extends JFrame {
 		txtUsername.setText("Username");
 		txtUsername.setColumns(10);
 		
-		panelInscrire = new JPanel();
-		panelInscrire.setBackground(new Color(220, 172, 70 ));
-		panelInscrire.setBorder(new EmptyBorder(2, 2, 2, 2));
-		panelInscrire.setLayout(null);
-		panelInscrire.setBounds(158, 264, 112, 29);
-		contentPaneAccueil.add(panelInscrire);
-		
-		JLabel txtInscrire = new JLabel("S'inscrire");
-		txtInscrire.setBounds(54, 6, 52, 16);
-		panelInscrire.add(txtInscrire);
-		txtInscrire.setFont(new Font("PT Sans", Font.PLAIN, 11));
-		
 		txtSmartLoto = new JTextPane();
 		txtSmartLoto.setForeground(new Color(168, 193, 197));
 		txtSmartLoto.setBackground(new Color(238, 238, 238));
@@ -150,17 +137,13 @@ public class Connexion extends JFrame {
 		txtSmartLoto.setBounds(237, 63, 150, 29);
 		contentPaneAccueil.add(txtSmartLoto);
 		
-		panelSeConnecter = new JPanel();
-		panelSeConnecter.setBackground(new Color(168, 193, 197));
-		panelSeConnecter.setBorder(new EmptyBorder(2, 2, 2, 2));
-		panelSeConnecter.setLayout(null);
-		panelSeConnecter.setBounds(328, 264, 112, 29);
-		contentPaneAccueil.add(panelSeConnecter);
+		btnInscrire = new JButton("S'inscrire");
+		btnInscrire.setBounds(270, 291, 117, 29);
+		contentPaneAccueil.add(btnInscrire);
 		
-		lblSeConnecter = new JLabel("Se connecter");
-		lblSeConnecter.setFont(new Font("PT Sans", Font.PLAIN, 11));
-		lblSeConnecter.setBounds(43, 6, 63, 16);
-		panelSeConnecter.add(lblSeConnecter);
+		btnSeConnecter = new JButton("Se connecter");
+		btnSeConnecter.setBounds(412, 291, 117, 29);
+		contentPaneAccueil.add(btnSeConnecter);
 		
 	
 	

@@ -227,8 +227,10 @@ public class FrameMenu extends JFrame implements Bouton {
 			
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(JOptionPane.showConfirmDialog(null, "Etes vous sûrs de vouloir fermer l'application?", "Confirmation", JOptionPane.YES_NO_OPTION)==0);
-				FrameMenu.this.dispose();
+				if(JOptionPane.showConfirmDialog(null, "Etes vous sûrs de vouloir fermer l'application?", "Confirmation", JOptionPane.YES_NO_OPTION)==0) {
+					FrameMenu.this.dispose();
+				};
+				
 			}
 			
 			@Override
