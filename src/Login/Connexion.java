@@ -81,13 +81,15 @@ public class Connexion extends JFrame {
 		PanelHeader.setLayout(null);
 		
 		buttonClose = new JButton("X");
-		buttonClose.setBounds(582, 6, 18, 16);
+		buttonClose.setBounds(582, 0, 18, 16);
 		PanelHeader.add(buttonClose);
 		buttonClose.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(JOptionPane.showConfirmDialog(null, "Etes vous sûrs de vouloir fermer l'application?", "Confirmation", JOptionPane.YES_NO_OPTION)==0);
+				if(JOptionPane.showConfirmDialog(null, "Etes vous sûrs de vouloir fermer l'application?", "Confirmation", JOptionPane.YES_NO_OPTION)==0) {
+
 				Connexion.this.dispose();
+			};
 			}
 			
 			@Override

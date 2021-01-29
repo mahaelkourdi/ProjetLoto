@@ -34,6 +34,7 @@ public class FrameMenu extends JFrame implements Bouton {
 	private JPanel PanelStatistique;
 	private	JPanel PanelHistorique;
 	private JPanel PanelReducteur;
+	private JFrame connexion;
 
 
 	/**
@@ -103,15 +104,11 @@ public class FrameMenu extends JFrame implements Bouton {
 		
 		panelConnexion.add(lblSmartLoto);
 		
-		JLabel lblProfil = new JLabel("Gérer mon compte");
-		lblProfil.setBounds(548, 6, 126, 29);
-		panelConnexion.add(lblProfil);
-		
-		JButton btnBonjour = new JButton("");
-		btnBonjour.addActionListener(new ActionListener() {
+		JButton btnProfil = new JButton("Gérer mon compte");
+		btnProfil.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				if (e.getSource() == btnBonjour) {
+				if (e.getSource() == btnProfil) {
 					FrameProfil f = new FrameProfil();
 					f.setVisible(true);
 					//setVisible(false);
@@ -119,8 +116,24 @@ public class FrameMenu extends JFrame implements Bouton {
 				}
 			}
 		});
-		btnBonjour.setBounds(526, 6, 168, 29);
-		panelConnexion.add(btnBonjour);
+		btnProfil.setBounds(405, 6, 168, 29);
+		panelConnexion.add(btnProfil);
+		
+		
+		JFrame connexion = new Connexion();
+		JButton btnDeconnexion = new JButton("Déconnexion");
+		btnDeconnexion.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(e.getSource()== btnDeconnexion){
+					connexion.setVisible(true);
+					setVisible(false);
+
+					
+				}
+			}
+		});
+		btnDeconnexion.setBounds(577, 6, 117, 29);
+		panelConnexion.add(btnDeconnexion);
 		
 		
 		
