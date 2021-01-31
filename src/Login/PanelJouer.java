@@ -14,6 +14,8 @@ import javax.swing.JRadioButton;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 
 public class PanelJouer extends JPanel {
@@ -47,31 +49,85 @@ public class PanelJouer extends JPanel {
 
         // Champs pour saisir les numéros
         num1 = new JTextField();
+        num1.addKeyListener(new KeyAdapter() {
+        	@Override
+        	public void keyTyped(KeyEvent e) {
+        		char c = e.getKeyChar();
+        		if (!Character.isDigit(c)) {
+        			e.consume();
+        		}
+        	}
+        });
         num1.setColumns(10);
         num1.setBounds(34, 48, 53, 31);
         add(num1);
 
         num2 = new JTextField();
+        num2.addKeyListener(new KeyAdapter() {
+        	@Override
+        	public void keyTyped(KeyEvent e) {
+        		char c = e.getKeyChar();
+        		if (!Character.isDigit(c)) {
+        			e.consume();
+        		}
+        	}
+        });
         num2.setColumns(10);
         num2.setBounds(108, 48, 53, 31);
         add(num2);
 
         num3 = new JTextField();
+        num3.addKeyListener(new KeyAdapter() {
+        	@Override
+        	public void keyTyped(KeyEvent e) {
+        		char c = e.getKeyChar();
+        		if (!Character.isDigit(c)) {
+        			e.consume();
+        		}
+        	}
+        });
         num3.setColumns(10);
         num3.setBounds(178, 48, 53, 31);
         add(num3);
 
         num4 = new JTextField();
+        num4.addKeyListener(new KeyAdapter() {
+        	@Override
+        	public void keyTyped(KeyEvent e) {
+        		char c = e.getKeyChar();
+        		if (!Character.isDigit(c)) {
+        			e.consume();
+        		}
+        	}
+        });
         num4.setColumns(10);
         num4.setBounds(250, 48, 53, 31);
         add(num4);
 
         num5 = new JTextField();
+        num5.addKeyListener(new KeyAdapter() {
+        	@Override
+        	public void keyTyped(KeyEvent e) {
+        		char c = e.getKeyChar();
+        		if (!Character.isDigit(c)) {
+        			e.consume();
+        		}
+        	}
+        });
         num5.setColumns(10);
         num5.setBounds(326, 48, 53, 31);
         add(num5);
 
         num6 = new JTextField();
+        num6.addKeyListener(new KeyAdapter() {
+        	@Override
+        	public void keyTyped(KeyEvent e) {
+        		char c = e.getKeyChar();
+        		if (!Character.isDigit(c)) {
+        			e.consume();
+        		}
+        	}
+        });
         num6.setColumns(10);
         num6.setBounds(34, 134, 53, 31);
         add(num6);

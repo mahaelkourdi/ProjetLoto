@@ -1,0 +1,11 @@
+La ou les différentes solution(s):
+La valeur de 1 est : [1, 2, 3, 4, 9]
+La valeur de 2 est : [3, 6, 7, 8, 9]
+La valeur de 3 est : [2, 4, 5, 7, 8]
+La valeur de 4 est : [1, 4, 5, 6, 7]
+La valeur de 5 est : [1, 2, 5, 6, 8]
+La valeur de 6 est : [2, 3, 5, 7, 9]
+La valeur de 7 est : [1, 4, 5, 8, 9]
+La valeur de 8 est : [2, 3, 4, 6, 8]
+La valeur de 9 est : [1, 2, 3, 7, 8]
+La valeur de 10 est : [3, 4, 5, 6, 9]

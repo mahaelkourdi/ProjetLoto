@@ -3,7 +3,10 @@ package Login;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+import java.util.Set;
 import java.util.TreeMap;
 
 import javax.swing.ButtonGroup;
@@ -14,6 +17,13 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
+
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
+import java.awt.Desktop;
 
 import fonction.Cnp;
 import fonction.SystemReducteur;
@@ -55,61 +65,169 @@ public class PanelReducteur extends JPanel {
         add(lblInstruction);
 
         num1 = new JTextField();
+        num1.addKeyListener(new KeyAdapter() {
+        	@Override
+        	public void keyTyped(KeyEvent e) {
+        		char c = e.getKeyChar();
+        		if (!Character.isDigit(c)) {
+        			e.consume();
+        		}
+        	}
+        });
         num1.setBounds(17, 53, 51, 34);
         add(num1);
         num1.setColumns(10);
 
         num2 = new JTextField();
+        num2.addKeyListener(new KeyAdapter() {
+        	@Override
+        	public void keyTyped(KeyEvent e) {
+        		char c = e.getKeyChar();
+        		if (!Character.isDigit(c)) {
+        			e.consume();
+        		}
+        	}
+        });
         num2.setColumns(10);
         num2.setBounds(80, 53, 51, 34);
         add(num2);
 
         num3 = new JTextField();
+        num3.addKeyListener(new KeyAdapter() {
+        	@Override
+        	public void keyTyped(KeyEvent e) {
+        		char c = e.getKeyChar();
+        		if (!Character.isDigit(c)) {
+        			e.consume();
+        		}
+        	}
+        });
         num3.setColumns(10);
         num3.setBounds(142, 53, 51, 34);
         add(num3);
 
         num4 = new JTextField();
+        num4.addKeyListener(new KeyAdapter() {
+        	@Override
+        	public void keyTyped(KeyEvent e) {
+        		char c = e.getKeyChar();
+        		if (!Character.isDigit(c)) {
+        			e.consume();
+        		}
+        	}
+        });
         num4.setColumns(10);
         num4.setBounds(210, 53, 51, 34);
         add(num4);
 
         num5 = new JTextField();
+        num5.addKeyListener(new KeyAdapter() {
+        	@Override
+        	public void keyTyped(KeyEvent e) {
+        		char c = e.getKeyChar();
+        		if (!Character.isDigit(c)) {
+        			e.consume();
+        		}
+        	}
+        });
         num5.setColumns(10);
         num5.setBounds(274, 53, 51, 34);
         add(num5);
 
         num6 = new JTextField();
+        num6.addKeyListener(new KeyAdapter() {
+        	@Override
+        	public void keyTyped(KeyEvent e) {
+        		char c = e.getKeyChar();
+        		if (!Character.isDigit(c)) {
+        			e.consume();
+        		}
+        	}
+        });
         num6.setColumns(10);
         num6.setBounds(343, 53, 51, 34);
         add(num6);
 
         num7 = new JTextField();
+        num7.addKeyListener(new KeyAdapter() {
+        	@Override
+        	public void keyTyped(KeyEvent e) {
+        		char c = e.getKeyChar();
+        		if (!Character.isDigit(c)) {
+        			e.consume();
+        		}
+        	}
+        });
         num7.setColumns(10);
         num7.setBounds(17, 99, 51, 34);
         add(num7);
 
         num8 = new JTextField();
+        num8.addKeyListener(new KeyAdapter() {
+        	@Override
+        	public void keyTyped(KeyEvent e) {
+        		char c = e.getKeyChar();
+        		if (!Character.isDigit(c)) {
+        			e.consume();
+        		}
+        	}
+        });
         num8.setColumns(10);
         num8.setBounds(79, 99, 51, 34);
         add(num8);
 
         num9 = new JTextField();
+        num9.addKeyListener(new KeyAdapter() {
+        	@Override
+        	public void keyTyped(KeyEvent e) {
+        		char c = e.getKeyChar();
+        		if (!Character.isDigit(c)) {
+        			e.consume();
+        		}
+        	}
+        });
         num9.setColumns(10);
         num9.setBounds(142, 99, 51, 34);
         add(num9);
 
         num10 = new JTextField();
+        num10.addKeyListener(new KeyAdapter() {
+        	@Override
+        	public void keyTyped(KeyEvent e) {
+        		char c = e.getKeyChar();
+        		if (!Character.isDigit(c)) {
+        			e.consume();
+        		}
+        	}
+        });
         num10.setColumns(10);
         num10.setBounds(210, 99, 51, 34);
         add(num10);
 
         num11 = new JTextField();
+        num11.addKeyListener(new KeyAdapter() {
+        	@Override
+        	public void keyTyped(KeyEvent e) {
+        		char c = e.getKeyChar();
+        		if (!Character.isDigit(c)) {
+        			e.consume();
+        		}
+        	}
+        });
         num11.setColumns(10);
         num11.setBounds(274, 99, 51, 34);
         add(num11);
 
         num12 = new JTextField();
+        num12.addKeyListener(new KeyAdapter() {
+        	@Override
+        	public void keyTyped(KeyEvent e) {
+        		char c = e.getKeyChar();
+        		if (!Character.isDigit(c)) {
+        			e.consume();
+        		}
+        	}
+        });
         num12.setColumns(10);
         num12.setBounds(343, 99, 51, 34);
         add(num12);
@@ -208,9 +326,45 @@ public class PanelReducteur extends JPanel {
                     SystemReducteur tf = new SystemReducteur(list.size(), 5, 4);
                     TreeMap<Integer, ArrayList<Integer>> listFinal = new TreeMap<Integer, ArrayList<Integer>>();
                     listFinal = SysReducteur(list, tf);
-                    System.out.println(listFinal);
+                    //System.out.println(listFinal);
 
                     JOptionPane.showMessageDialog(null, "Voici vos résultats !");
+                    
+                    try {
+
+                    	//Parcours de la tree map et enregistrement dans un tableau de string
+                    	String[] result = new String[listFinal.size() + 1];
+                    	Set<Integer> keys = listFinal.keySet();
+                    	for (int key: keys) {
+                    		//System.out.println("La valeur de " + key + " est : " + listFinal.get(key));
+                    		result[key] = "La valeur de " + key + " est : " + listFinal.get(key);
+                    	}
+                    	System.out.println("La réponse est: "+result[1] );
+	            	   File file = new File("SystemeReducteur.txt");
+	
+	            	   // créer le fichier s'il n'existe pas
+	            	   if (!file.exists()) {
+	            	    file.createNewFile();
+	            	   }
+	
+	            	   FileWriter fw = new FileWriter(file.getAbsoluteFile());
+	            	   BufferedWriter bw = new BufferedWriter(fw);
+	            	   bw.write("La ou les différentes solution(s):");
+	            	   bw.newLine();
+	            	   for (int i = 1; i < listFinal.size(); i++) {
+	            		   bw.write(result[i]);
+	            		   bw.newLine();
+	            	   }
+	            	   bw.close();
+	
+	            	   Desktop desktop = Desktop.getDesktop();
+	                   if(file.exists()) desktop.open(file);
+
+                    } catch (IOException e1) {
+                	   e1.printStackTrace();
+                	}
+                    
+                    
 
 
                 } else {
