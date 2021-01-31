@@ -24,20 +24,23 @@ import javax.swing.JButton;
 import javax.swing.JTextPane;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionAdapter;
 import java.awt.image.BufferedImage;
 
 import javax.swing.SwingConstants;
 
 public class Connexion extends JFrame {
 
-	private JPanel contentPaneAccueil;
+	private JPanel panelConnexion;
 	private JTextField txtUsername;
 	private JPasswordField txtPassword;
-	private JButton buttonClose;
+	private JButton btnClose;
 	private JTextPane txtSmartLoto;
 	private JLabel lblIcon;
 	private JButton btnInscrire;
 	private JButton btnSeConnecter;
+	private int posX = 0;   //Position X de la souris au clic
+	private int posY = 0;   //Position Y de la souris au clic
 	
 		
 
@@ -66,24 +69,24 @@ public class Connexion extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 600, 400);
 		setLocationRelativeTo(null);
-		contentPaneAccueil = new JPanel();
-		contentPaneAccueil.setBackground(new Color(238, 238, 238));
-		contentPaneAccueil.setBorder(new EmptyBorder(1, 1, 1, 1));
-		setContentPane(contentPaneAccueil);
-		contentPaneAccueil.setLayout(null);
+		panelConnexion = new JPanel();
+		panelConnexion.setBackground(new Color(238, 238, 238));
+		panelConnexion.setBorder(new EmptyBorder(1, 1, 1, 1));
+		setContentPane(panelConnexion);
+		panelConnexion.setLayout(null);
 		
 
 		JPanel PanelHeader = new JPanel();
 		PanelHeader.setBorder(new EmptyBorder(1, 1, 1, 1));
 		PanelHeader.setBackground(new Color(220, 220, 220));
 		PanelHeader.setBounds(0, 0, 600, 20);
-		contentPaneAccueil.add(PanelHeader);
+		panelConnexion.add(PanelHeader);
 		PanelHeader.setLayout(null);
 		
-		buttonClose = new JButton("X");
-		buttonClose.setBounds(582, 0, 18, 16);
-		PanelHeader.add(buttonClose);
-		buttonClose.addMouseListener(new MouseAdapter() {
+		btnClose = new JButton("X");
+		btnClose.setBounds(582, 0, 18, 16);
+		PanelHeader.add(btnClose);
+		btnClose.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if(JOptionPane.showConfirmDialog(null, "Etes vous sûrs de vouloir fermer l'application?", "Confirmation", JOptionPane.YES_NO_OPTION)==0) {
@@ -94,11 +97,11 @@ public class Connexion extends JFrame {
 			
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				buttonClose.setForeground(Color.RED);
+				btnClose.setForeground(Color.RED);
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
-				buttonClose.setForeground(Color.WHITE);
+				btnClose.setForeground(Color.WHITE);
 			}
 			
 		});
@@ -107,7 +110,7 @@ public class Connexion extends JFrame {
 		panel.setBorder(new EmptyBorder(2, 2, 2, 2));
 		panel.setBackground(SystemColor.controlLtHighlight);
 		panel.setBounds(74, 192, 455, 40);
-		contentPaneAccueil.add(panel);
+		panelConnexion.add(panel);
 		panel.setLayout(null);
 		
 		txtPassword = new JPasswordField();
@@ -121,7 +124,7 @@ public class Connexion extends JFrame {
 		panel_1.setBorder(new EmptyBorder(2, 2, 2, 2));
 		panel_1.setBackground(SystemColor.controlLtHighlight);
 		panel_1.setBounds(74, 121, 455, 40);
-		contentPaneAccueil.add(panel_1);
+		panelConnexion.add(panel_1);
 		panel_1.setLayout(null);
 		
 		txtUsername = new JTextField();
@@ -137,17 +140,36 @@ public class Connexion extends JFrame {
 		txtSmartLoto.setFont(new Font("SignPainter", Font.PLAIN, 32));
 		txtSmartLoto.setText("Smart - Loto");
 		txtSmartLoto.setBounds(237, 63, 150, 29);
-		contentPaneAccueil.add(txtSmartLoto);
+		panelConnexion.add(txtSmartLoto);
 		
 		btnInscrire = new JButton("S'inscrire");
 		btnInscrire.setBounds(270, 291, 117, 29);
-		contentPaneAccueil.add(btnInscrire);
+		panelConnexion.add(btnInscrire);
 		
 		btnSeConnecter = new JButton("Se connecter");
 		btnSeConnecter.setBounds(412, 291, 117, 29);
-		contentPaneAccueil.add(btnSeConnecter);
+		panelConnexion.add(btnSeConnecter);
 		
-	
+		
+		// Bouger la fenêtre 
+		
+		addMouseListener(new MouseAdapter() {
+            @Override
+            //on recupere les coordonnées de la souris
+            public void mousePressed(MouseEvent e) {
+                posX = e.getX();    //Position X de la souris au clic
+                posY = e.getY();    //Position Y de la souris au clic
+            }
+        });
+         
+        addMouseMotionListener(new MouseMotionAdapter() {
+            // A chaque deplacement on recalcul le positionnement de la fenetre
+            public void mouseDragged(MouseEvent e) {
+                int depX = e.getX() - posX;
+                int depY = e.getY() - posY;
+                setLocation(getX()+depX, getY()+depY);
+            }
+        });
 	
 		
 	}

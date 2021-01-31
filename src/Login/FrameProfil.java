@@ -26,6 +26,7 @@ public class FrameProfil extends JFrame {
 	private JTextField nom;
 	private JTextField prenom;
 	private JTextField mail;
+	private JButton btnValider;
 
 	/**
 	 * Launch the application.
@@ -104,7 +105,7 @@ public class FrameProfil extends JFrame {
 		panelInformations.add(mail);
 		
 		
-		JButton btnValider = new JButton("Valider");
+		btnValider = new JButton("Valider");
 		
 		btnValider.setFont(new Font("PT Sans", Font.PLAIN, 13));
 		btnValider.setBounds(559, 331, 117, 29);

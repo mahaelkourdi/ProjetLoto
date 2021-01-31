@@ -1,20 +1,27 @@
 package Login;
 
+import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.TreeMap;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
+import fonction.Cnp;
+import fonction.SystemReducteur;
+
 public class PanelReducteur extends JPanel {
 
 
-	private int Tab1[] = new int[12]; //Premier tableau d'entiers
+	private int tab1[] = new int[12]; //Premier tableau d'entiers
 	
 	private JTextField num1;
 	private JTextField num2;
@@ -30,10 +37,11 @@ public class PanelReducteur extends JPanel {
 	private JTextField num12;
 	
 	private ButtonGroup grpObjectif ;
-	private ButtonGroup grpGarantie;
+	//private ButtonGroup grpGarantie;
 
-	private String objectif;
-	private String garantie;
+	private  int objectif;
+	//private String garantie;
+	
 
   
 
@@ -111,7 +119,7 @@ public class PanelReducteur extends JPanel {
 		add(num12);
 		
 		// Garantie
-		JLabel lblGarantie = new JLabel("Séléctionner la garantie  souhaitée:");
+		/*JLabel lblGarantie = new JLabel("Sélectionner la garantie  souhaitée:");
 		lblGarantie.setBounds(17, 227, 290, 16);
 		add(lblGarantie);
 		
@@ -129,25 +137,29 @@ public class PanelReducteur extends JPanel {
 		 
 		 grpGarantie = new ButtonGroup();
 		 grpGarantie.add(btn80);
-		 grpGarantie.add(btn100);
+		 grpGarantie.add(btn100);*/
 
 		
 		// Objectifs 
-		JLabel lblObjectif = new JLabel("Sélectionner l'objectif souhaité :");
+		JLabel lblObjectif = new JLabel("Sélctionner le nombre des bons numéros souhaités :");
 		lblObjectif.setBounds(17, 145, 284, 16);
 		add(lblObjectif);
 		
-		JRadioButton btn3 = new JRadioButton("3 ");
-		btn3.setBounds(50, 173, 51, 23);
+		JRadioButton btn3 = new JRadioButton("3");
+		btn3.setBounds(17, 173, 144, 23);
 		add(btn3);
 		
 		JRadioButton btn4 = new JRadioButton("4");
-		btn4.setBounds(150, 173, 51, 23);
+		btn4.setBounds(163, 173, 144, 23);
 		add(btn4);
 		
 		JRadioButton btn5 = new JRadioButton("5");
-		btn5.setBounds(250, 173, 51, 23);
+		btn5.setBounds(320, 173, 169, 23);
 		add(btn5);
+		
+		btn3.setActionCommand("3");
+		btn4.setActionCommand("4");
+		btn5.setActionCommand("5");
 		
 		grpObjectif = new ButtonGroup();
 		grpObjectif.add(btn3);
@@ -162,12 +174,13 @@ public class PanelReducteur extends JPanel {
 		
 		btnValider.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				/*
 					boolean checkGrille = true;
 					Valider();
-					for(int i =0; i<7 ; i++) {
-						System.out.println(Tab1[i]);
+					for(int i =0; i<11 ; i++) {
+						System.out.println(tab1[i]);
 						checkGrille = true;
-						if (Tab1[i]==0) {
+						if (tab1[i]==0) {
 							JOptionPane.showMessageDialog(null, "Saisir au moins 6 numéros",
 							      "Hey!", JOptionPane.ERROR_MESSAGE);
 							checkGrille = false;
@@ -177,26 +190,61 @@ public class PanelReducteur extends JPanel {
 					
 					
 					if(checkGrille) {
-						// Envoyer vers la page stat avec les valeurs de notre grille
+						
 						System.out.println("Grille ok :)");
 						JOptionPane.showMessageDialog(null, "Grille ajoutée avec succès");
-
-
+						
+						
 					} else {
 						// Ne rien faire
 						System.out.println("Grille non valide :)");
 					}
-
+					*/
 					
 					
 					
 			
+				
+				/*list.add(tab[0]);
+				list.add(tab[1]);
+				list.add(10);
+				list.add(22);
+				list.add(29);
+				list.add(32);
+				list.add(35);
+				list.add(40);
+				list.add(41);*/
+				//list.add(48);
+				
+				Valider();
+				System.out.println(tab1);
+
+				System.out.println(objectif);
+				ArrayList<Integer> list = new ArrayList<Integer>();
+				for (int i = 0 ; i < tab1.length;i++) {
+					if(tab1[i]!=0) {
+						list.add(tab1[i]);
+					}
+
+				}
+				System.out.println(list);
+
+				
+				SystemReducteur tf = new SystemReducteur(list.size(),5,4);
+				TreeMap<Integer, ArrayList<Integer>> listFinal = new TreeMap<Integer, ArrayList<Integer>>();
+				listFinal = SysReducteur( list, tf );
+				System.out.println(listFinal);
 			
 			}	
+			
+			
 		});
 		
 		
+		
 		add(btnValider);
+		
+		
 		
 	}
 	
@@ -204,62 +252,131 @@ public class PanelReducteur extends JPanel {
 	{
         	//On stockes les valeurs entr�es dans le premier tableau
 		if(num1.getText().equals("") || Integer.valueOf(num1.getText()).intValue() < 1 || Integer.valueOf(num1.getText()).intValue() > 49) {
-			Tab1[0] = 0;
+			tab1[0] = 0;
 		} else {
-			Tab1[0] = Integer.valueOf(num1.getText()).intValue();
+			tab1[0] = Integer.valueOf(num1.getText()).intValue();
 		}
 		if(num2.getText().equals("") || Integer.valueOf(num2.getText()).intValue() < 1 || Integer.valueOf(num2.getText()).intValue() > 49) {
-			Tab1[1] = 0;
+			tab1[1] = 0;
 		} else {
-			Tab1[1] = Integer.valueOf(num2.getText()).intValue();
+			tab1[1] = Integer.valueOf(num2.getText()).intValue();
 		}
 		if(num3.getText().equals("") || Integer.valueOf(num3.getText()).intValue() < 1 || Integer.valueOf(num3.getText()).intValue() > 49) {
-			Tab1[2] = 0;
+			tab1[2] = 0;
 		} else {
-			Tab1[2] = Integer.valueOf(num3.getText()).intValue();
+			tab1[2] = Integer.valueOf(num3.getText()).intValue();
 		}
 		if(num4.getText().equals("") || Integer.valueOf(num4.getText()).intValue() < 1 || Integer.valueOf(num4.getText()).intValue() > 49) {
-			Tab1[3] = 0;
+			tab1[3] = 0;
 		} else {
-			Tab1[3] = Integer.valueOf(num4.getText()).intValue();
+			tab1[3] = Integer.valueOf(num4.getText()).intValue();
 		}
 		if(num5.getText().equals("") || Integer.valueOf(num5.getText()).intValue() < 1 || Integer.valueOf(num5.getText()).intValue() > 49) {
-			Tab1[4] = 0;
+			tab1[4] = 0;
 		} else {
-			Tab1[4] = Integer.valueOf(num5.getText()).intValue();
+			tab1[4] = Integer.valueOf(num5.getText()).intValue();
 		}
-		if(num6.getText().equals("") || Integer.valueOf(num6.getText()).intValue() < 1 || Integer.valueOf(num1.getText()).intValue() > 49) {
-			Tab1[5] = 0;
+		if(num6.getText().equals("") || Integer.valueOf(num6.getText()).intValue() < 1 || Integer.valueOf(num6.getText()).intValue() > 49) {
+			tab1[5] = 0;
 		} else {
-			Tab1[5] = Integer.valueOf(num6.getText()).intValue();
+			tab1[5] = Integer.valueOf(num6.getText()).intValue();
 		}
 		
-		Tab1[6] = Integer.valueOf(num7.getText()).intValue();
-		Tab1[7] = Integer.valueOf(num8.getText()).intValue();
-		Tab1[8] = Integer.valueOf(num9.getText()).intValue();
-		Tab1[9] = Integer.valueOf(num10.getText()).intValue();
-		Tab1[10] = Integer.valueOf(num11.getText()).intValue();
-		Tab1[11] = Integer.valueOf(num12.getText()).intValue();
-
-		garantie = grpGarantie.getSelection().getActionCommand();
-		objectif = grpObjectif.getSelection().getActionCommand();
-
+		if(num7.getText().equals("") || Integer.valueOf(num7.getText()).intValue() < 1 || Integer.valueOf(num7.getText()).intValue() > 49) {
+            tab1[6] = 0;
+        } else {
+            tab1[6] = Integer.valueOf(num7.getText()).intValue();
+        }
+        if(num8.getText().equals("") || Integer.valueOf(num8.getText()).intValue() < 1 || Integer.valueOf(num8.getText()).intValue() > 49) {
+            tab1[7] = 0;
+        } else {
+            tab1[7] = Integer.valueOf(num8.getText()).intValue();
+        }
+        if(num9.getText().equals("") || Integer.valueOf(num9.getText()).intValue() < 1 || Integer.valueOf(num9.getText()).intValue() > 49) {
+            tab1[8] = 0;
+        } else {
+            tab1[8] = Integer.valueOf(num9.getText()).intValue();
+        }
+        if(num10.getText().equals("") || Integer.valueOf(num10.getText()).intValue() < 1 || Integer.valueOf(num10.getText()).intValue() > 49) {
+            tab1[9] = 0;
+        } else {
+            tab1[9] = Integer.valueOf(num10.getText()).intValue();
+        }
+        if(num11.getText().equals("") || Integer.valueOf(num11.getText()).intValue() < 1 || Integer.valueOf(num11.getText()).intValue() > 49) {
+            tab1[10] = 0;
+        } else {
+            tab1[10] = Integer.valueOf(num11.getText()).intValue();
+        }
+        if(num12.getText().equals("") || Integer.valueOf(num12.getText()).intValue() < 1 || Integer.valueOf(num12.getText()).intValue() > 49) {
+            tab1[11] = 0;
+        } else {
+            tab1[11] = Integer.valueOf(num12.getText()).intValue();
+        }
+		//garantie = grpGarantie.getSelection().getActionCommand();
+		objectif = Integer.parseInt(grpObjectif.getSelection().getActionCommand());
 	
 	
 		/*if(num8.getText().equals("") || Integer.valueOf(num8.getText()).intValue() < 1 || Integer.valueOf(num8.getText()).intValue() > 49) {
-			Tab1[7] = 0;
+			tab1[7] = 0;
 		} else {
-			Tab1[7] = Integer.valueOf(num8.getText()).intValue();
+			tab1[7] = Integer.valueOf(num8.getText()).intValue();
 		}
 		if(num9.getText().equals("") || Integer.valueOf(num9.getText()).intValue() < 1 || Integer.valueOf(num9.getText()).intValue() > 49) {
-			Tab1[8] = 0;
+			tab1[8] = 0;
 		} else {
-			Tab1[8] = Integer.valueOf(num9.getText()).intValue();
+			tab1[8] = Integer.valueOf(num9.getText()).intValue();
 		}*/
-
-
+		
 
 	}
+	
+	public static TreeMap<Integer, ArrayList<Integer>> SysReducteur(ArrayList<Integer> list, SystemReducteur tf ){
+		TreeMap<Integer, ArrayList<Integer>> listeF = new TreeMap<Integer, ArrayList<Integer>>();
+		//SystemReducteur tf = new SystemReducteur(list.size(),6,K);
+		ArrayList<Integer> listeEmplacement = new ArrayList<Integer>();
+		
+		// calcul des solutions et conserve la meilleure
+		int[] bestsolution = null;
+		for(int loop=0;loop<100;loop++) {
+			int[] solutions = tf.computeSolutions();
+			if (bestsolution==null || solutions.length<bestsolution.length) { 
+				System.out.println("found a solution of size:"+solutions.length);
+				bestsolution=solutions;
+			}
+		}
+		
+		int j = 0;
+		// affiche la meilleure solution
+		for(int solution : bestsolution) {
+			ArrayList<Integer> listeCombi = new ArrayList<Integer>();
+			
+			listeEmplacement= Cnp.combi(solution);
+			
+			j++;
+			
+			//System.out.println("new one" + listeCombi + " " +listeEmplacement + " "+ j + " "+ listeF);
+			for(int i = 0; i<= 4 ; i++) {
+				int tmp = listeEmplacement.get(i);
+				//System.out.println(tmp);
+				
+				listeCombi.add(list.get(tmp-1));
+				
+				
+			}
+			//System.out.println(listeCombi);
+			listeF.put(j, listeCombi);
+			//System.out.println("listeF " + listeF);
+			
+		}
+		//System.out.println(listeF);
+		
+		return listeF;
+
+	}
+	
+	
+	
 }
+
 
 

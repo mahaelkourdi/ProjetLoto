@@ -19,7 +19,7 @@ import java.awt.event.ActionListener;
 public class PanelJouer extends JPanel  {
 	private JLabel lblInstruction;
 	private JLabel lblSlectionnerUnJour;
-	private int Tab1[] = new int[6]; //Premier tableau d'entiers
+	private int tab1[] = new int[6]; 
 	private JButton btnValider;
 	private ButtonGroup group ;
 
@@ -120,9 +120,9 @@ public class PanelJouer extends JPanel  {
 					boolean checkGrille = true;
 					Valider();
 					for(i =0; i<6 ; i++) {
-						System.out.println(Tab1[i]);
+						System.out.println(tab1[i]);
 						checkGrille = true;
-						if (Tab1[i]==0) {
+						if (tab1[i]==0) {
 							JOptionPane.showMessageDialog(null, "Rentrer les 5 numéros et le numéro de chance",
 							      "Hey!", JOptionPane.ERROR_MESSAGE);
 							checkGrille = false;
@@ -164,36 +164,36 @@ public class PanelJouer extends JPanel  {
 	
 	public void Valider()
 	{
-        	//On stockes les valeurs entr�es dans le premier tableau
+        	//On stockes les valeurs entr�es dans le tableau
 		if(num1.getText().equals("") || Integer.valueOf(num1.getText()).intValue() < 1 || Integer.valueOf(num1.getText()).intValue() > 49) {
-			Tab1[0] = 0;
+			tab1[0] = 0;
 		} else {
-			Tab1[0] = Integer.valueOf(num1.getText()).intValue();
+			tab1[0] = Integer.valueOf(num1.getText()).intValue();
 		}
 		if(num2.getText().equals("") || Integer.valueOf(num2.getText()).intValue() < 1 || Integer.valueOf(num2.getText()).intValue() > 49) {
-			Tab1[1] = 0;
+			tab1[1] = 0;
 		} else {
-			Tab1[1] = Integer.valueOf(num2.getText()).intValue();
+			tab1[1] = Integer.valueOf(num2.getText()).intValue();
 		}
 		if(num3.getText().equals("") || Integer.valueOf(num3.getText()).intValue() < 1 || Integer.valueOf(num3.getText()).intValue() > 49) {
-			Tab1[2] = 0;
+			tab1[2] = 0;
 		} else {
-			Tab1[2] = Integer.valueOf(num3.getText()).intValue();
+			tab1[2] = Integer.valueOf(num3.getText()).intValue();
 		}
 		if(num4.getText().equals("") || Integer.valueOf(num4.getText()).intValue() < 1 || Integer.valueOf(num4.getText()).intValue() > 49) {
-			Tab1[3] = 0;
+			tab1[3] = 0;
 		} else {
-			Tab1[3] = Integer.valueOf(num4.getText()).intValue();
+			tab1[3] = Integer.valueOf(num4.getText()).intValue();
 		}
 		if(num5.getText().equals("") || Integer.valueOf(num5.getText()).intValue() < 1 || Integer.valueOf(num5.getText()).intValue() > 49) {
-			Tab1[4] = 0;
+			tab1[4] = 0;
 		} else {
-			Tab1[4] = Integer.valueOf(num5.getText()).intValue();
+			tab1[4] = Integer.valueOf(num5.getText()).intValue();
 		}
-		if(num6.getText().equals("") || Integer.valueOf(num6.getText()).intValue() < 1 || Integer.valueOf(num1.getText()).intValue() > 10) {
-			Tab1[5] = 0;
+		if(num6.getText().equals("") || Integer.valueOf(num6.getText()).intValue() < 1 || Integer.valueOf(num6.getText()).intValue() > 10) {
+			tab1[5] = 0;
 		} else {
-			Tab1[5] = Integer.valueOf(num6.getText()).intValue();
+			tab1[5] = Integer.valueOf(num6.getText()).intValue();
 		}
 		value = group.getSelection().getActionCommand();
 

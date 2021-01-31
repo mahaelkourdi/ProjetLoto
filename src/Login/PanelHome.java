@@ -42,12 +42,8 @@ public class PanelHome extends JPanel implements ActionListener{
 		add(btnJouer);
 		add(panelJouer);
 		btnJouer.addActionListener(this );
-		
-	
 	
 	}
-	
-		
 	
 
 	@Override

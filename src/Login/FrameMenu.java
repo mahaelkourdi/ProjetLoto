@@ -15,6 +15,7 @@ import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionAdapter;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 import javax.swing.ImageIcon;
@@ -29,13 +30,18 @@ import java.awt.Component;
 public class FrameMenu extends JFrame implements Bouton {
 
 	private JPanel contentPane;
-	private JButton ButtonClose;
+	private JButton btnClose;
 	private JPanel PanelHome;
 	private JPanel PanelStatistique;
 	private	JPanel PanelHistorique;
 	private JPanel PanelReducteur;
 	private JFrame connexion;
-
+	private int posX = 0;   //Position X de la souris au clic
+	private int posY = 0;   //Position Y de la souris au clic
+	private JButton btnDeconnexion;
+	private JButton btnProfil;
+	private JFrame frameProfile;
+	
 
 	/**
 	 * Launch the application.
@@ -87,9 +93,9 @@ public class FrameMenu extends JFrame implements Bouton {
 		contentPane.add(PanelHeader);
 		PanelHeader.setLayout(null);
 		
-		JButton buttonClose  = new JButton("X");
-		buttonClose.setBounds(670, 0, 30, 20);
-		PanelHeader.add(buttonClose);
+		JButton btnClose  = new JButton("X");
+		btnClose.setBounds(670, 0, 30, 20);
+		PanelHeader.add(btnClose);
 		
 		JPanel panelConnexion = new JPanel();
 		panelConnexion.setBackground(new Color(238, 238, 238));
@@ -104,13 +110,13 @@ public class FrameMenu extends JFrame implements Bouton {
 		
 		panelConnexion.add(lblSmartLoto);
 		
-		JButton btnProfil = new JButton("Gérer mon compte");
+		btnProfil = new JButton("Gérer mon compte");
 		btnProfil.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				if (e.getSource() == btnProfil) {
-					FrameProfil f = new FrameProfil();
-					f.setVisible(true);
+					frameProfile = new FrameProfil();
+					frameProfile.setVisible(true);
 					//setVisible(false);
 					
 				}
@@ -120,8 +126,8 @@ public class FrameMenu extends JFrame implements Bouton {
 		panelConnexion.add(btnProfil);
 		
 		
-		JFrame connexion = new Connexion();
-		JButton btnDeconnexion = new JButton("Déconnexion");
+		connexion = new Connexion();
+		btnDeconnexion = new JButton("Déconnexion");
 		btnDeconnexion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource()== btnDeconnexion){
@@ -236,7 +242,7 @@ public class FrameMenu extends JFrame implements Bouton {
 
 		menuClicked(PanelHome);
 		
-		buttonClose.addMouseListener(new MouseAdapter() {
+		btnClose.addMouseListener(new MouseAdapter() {
 			
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -248,16 +254,39 @@ public class FrameMenu extends JFrame implements Bouton {
 			
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				buttonClose.setForeground(Color.RED);
+				btnClose.setForeground(Color.RED);
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
-				buttonClose.setForeground(Color.WHITE);
+				btnClose.setForeground(Color.WHITE);
 			}
 			
 		});
 		
-	}
+		
+		// Bouger la fenêtre 
+		
+					addMouseListener(new MouseAdapter() {
+			            @Override
+			            //on recupere les coordonnées de la souris
+			            public void mousePressed(MouseEvent e) {
+			                posX = e.getX();    //Position X de la souris au clic
+			                posY = e.getY();    //Position Y de la souris au clic
+			            }
+			        });
+			         
+			        addMouseMotionListener(new MouseMotionAdapter() {
+			            // A chaque deplacement on recalcul le positionnement de la fenetre
+			            public void mouseDragged(MouseEvent e) {
+			                int depX = e.getX() - posX;
+			                int depY = e.getY() - posY;
+			                setLocation(getX()+depX, getY()+depY);
+			            }
+			        });
+				
+				
+		
+			}
 		
 			public void menuClicked(JPanel panel) {
 				PanelHome.setVisible(false);
@@ -306,7 +335,8 @@ public class FrameMenu extends JFrame implements Bouton {
 				
 				
 			}
-		}
+			
+			}
 }
 		
 		
