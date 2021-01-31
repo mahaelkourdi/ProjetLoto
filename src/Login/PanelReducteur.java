@@ -21,104 +21,100 @@ import fonction.SystemReducteur;
 public class PanelReducteur extends JPanel {
 
 
-	private int tab1[] = new int[12]; //Premier tableau d'entiers
-	
-	private JTextField num1;
-	private JTextField num2;
-	private JTextField num3;
-	private JTextField num4;
-	private JTextField num5;
-	private JTextField num6;
-	private JTextField num7;
-	private JTextField num8;
-	private JTextField num9;
-	private JTextField num10;
-	private JTextField num11;
-	private JTextField num12;
-	
-	private ButtonGroup grpObjectif ;
-	//private ButtonGroup grpGarantie;
+    private final int[] tab1 = new int[12]; //Premier tableau d'entiers
 
-	private  int objectif;
-	//private String garantie;
-	
+    private final JTextField num1;
+    private final JTextField num2;
+    private final JTextField num3;
+    private final JTextField num4;
+    private final JTextField num5;
+    private final JTextField num6;
+    private final JTextField num7;
+    private final JTextField num8;
+    private final JTextField num9;
+    private final JTextField num10;
+    private final JTextField num11;
+    private final JTextField num12;
 
-  
+    private final ButtonGroup grpObjectif;
+    //private ButtonGroup grpGarantie;
+
+    private int objectif;
+    //private String garantie;
 
 
+    /**
+     * Create the panel.
+     */
+    public PanelReducteur() {
+        setBounds(100, 0, 548, 335);
+        setLayout(null);
 
-	/**
-	 * Create the panel.
-	 */
-	public PanelReducteur() {
-		setBounds(100,0,548,335);
-		setLayout(null);
-		
-		JLabel lblInstruction = new JLabel("Saisir au moins 6 numéros compris entre 1 et 49:");
-		lblInstruction.setBounds(17, 25, 329, 16);
-		add(lblInstruction);
-		
-		num1 = new JTextField();
-		num1.setBounds(17, 53, 51, 34);
-		add(num1);
-		num1.setColumns(10);
-		
-		num2 = new JTextField();
-		num2.setColumns(10);
-		num2.setBounds(80, 53, 51, 34);
-		add(num2);
-		
-		num3 = new JTextField();
-		num3.setColumns(10);
-		num3.setBounds(142, 53, 51, 34);
-		add(num3);
-		
-		num4 = new JTextField();
-		num4.setColumns(10);
-		num4.setBounds(210, 53, 51, 34);
-		add(num4);
-		
-		num5 = new JTextField();
-		num5.setColumns(10);
-		num5.setBounds(274, 53, 51, 34);
-		add(num5);
-		
-		num6 = new JTextField();
-		num6.setColumns(10);
-		num6.setBounds(343, 53, 51, 34);
-		add(num6);
-		
-		num7 = new JTextField();
-		num7.setColumns(10);
-		num7.setBounds(17, 99, 51, 34);
-		add(num7);
-		
-		num8 = new JTextField();
-		num8.setColumns(10);
-		num8.setBounds(79, 99, 51, 34);
-		add(num8);
-		
-		num9 = new JTextField();
-		num9.setColumns(10);
-		num9.setBounds(142, 99, 51, 34);
-		add(num9);
-		
-		num10 = new JTextField();
-		num10.setColumns(10);
-		num10.setBounds(210, 99, 51, 34);
-		add(num10);
-		
-		num11 = new JTextField();
-		num11.setColumns(10);
-		num11.setBounds(274, 99, 51, 34);
-		add(num11);
-		
-		num12 = new JTextField();
-		num12.setColumns(10);
-		num12.setBounds(343, 99, 51, 34);
-		add(num12);
-		
-		// Garantie
+        JLabel lblInstruction = new JLabel("Saisir au moins 6 numéros compris entre 1 et 49:");
+        lblInstruction.setBounds(17, 25, 329, 16);
+        add(lblInstruction);
+
+        num1 = new JTextField();
+        num1.setBounds(17, 53, 51, 34);
+        add(num1);
+        num1.setColumns(10);
+
+        num2 = new JTextField();
+        num2.setColumns(10);
+        num2.setBounds(80, 53, 51, 34);
+        add(num2);
+
+        num3 = new JTextField();
+        num3.setColumns(10);
+        num3.setBounds(142, 53, 51, 34);
+        add(num3);
+
+        num4 = new JTextField();
+        num4.setColumns(10);
+        num4.setBounds(210, 53, 51, 34);
+        add(num4);
+
+        num5 = new JTextField();
+        num5.setColumns(10);
+        num5.setBounds(274, 53, 51, 34);
+        add(num5);
+
+        num6 = new JTextField();
+        num6.setColumns(10);
+        num6.setBounds(343, 53, 51, 34);
+        add(num6);
+
+        num7 = new JTextField();
+        num7.setColumns(10);
+        num7.setBounds(17, 99, 51, 34);
+        add(num7);
+
+        num8 = new JTextField();
+        num8.setColumns(10);
+        num8.setBounds(79, 99, 51, 34);
+        add(num8);
+
+        num9 = new JTextField();
+        num9.setColumns(10);
+        num9.setBounds(142, 99, 51, 34);
+        add(num9);
+
+        num10 = new JTextField();
+        num10.setColumns(10);
+        num10.setBounds(210, 99, 51, 34);
+        add(num10);
+
+        num11 = new JTextField();
+        num11.setColumns(10);
+        num11.setBounds(274, 99, 51, 34);
+        add(num11);
+
+        num12 = new JTextField();
+        num12.setColumns(10);
+        num12.setBounds(343, 99, 51, 34);
+        add(num12);
+
+        // Garantie
 		/*JLabel lblGarantie = new JLabel("Sélectionner la garantie  souhaitée:");
 		lblGarantie.setBounds(17, 227, 290, 16);
 		add(lblGarantie);
@@ -139,41 +135,39 @@ public class PanelReducteur extends JPanel {
 		 grpGarantie.add(btn80);
 		 grpGarantie.add(btn100);*/
 
-		
-		// Objectifs 
-		JLabel lblObjectif = new JLabel("Sélctionner le nombre des bons numéros souhaités :");
-		lblObjectif.setBounds(17, 145, 284, 16);
-		add(lblObjectif);
-		
-		JRadioButton btn3 = new JRadioButton("3");
-		btn3.setBounds(17, 173, 144, 23);
-		add(btn3);
-		
-		JRadioButton btn4 = new JRadioButton("4");
-		btn4.setBounds(163, 173, 144, 23);
-		add(btn4);
-		
-		JRadioButton btn5 = new JRadioButton("5");
-		btn5.setBounds(320, 173, 169, 23);
-		add(btn5);
-		
-		btn3.setActionCommand("3");
-		btn4.setActionCommand("4");
-		btn5.setActionCommand("5");
-		
-		grpObjectif = new ButtonGroup();
-		grpObjectif.add(btn3);
-		grpObjectif.add(btn4);
-		grpObjectif.add(btn5);
+
+        // Objectifs
+        JLabel lblObjectif = new JLabel("Sélctionner le nombre des bons numéros souhaités :");
+        lblObjectif.setBounds(17, 145, 284, 16);
+        add(lblObjectif);
+
+        JRadioButton btn3 = new JRadioButton("3");
+        btn3.setBounds(17, 173, 144, 23);
+        add(btn3);
+
+        JRadioButton btn4 = new JRadioButton("4");
+        btn4.setBounds(163, 173, 144, 23);
+        add(btn4);
+
+        JRadioButton btn5 = new JRadioButton("5");
+        btn5.setBounds(320, 173, 169, 23);
+        add(btn5);
+
+        btn3.setActionCommand("3");
+        btn4.setActionCommand("4");
+        btn5.setActionCommand("5");
+
+        grpObjectif = new ButtonGroup();
+        grpObjectif.add(btn3);
+        grpObjectif.add(btn4);
+        grpObjectif.add(btn5);
 
 
-		
-		
-		JButton btnValider = new JButton("Valider");
-		btnValider.setBounds(425, 300, 117, 29);
-		
-		btnValider.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+        JButton btnValider = new JButton("Valider");
+        btnValider.setBounds(425, 300, 117, 29);
+
+        btnValider.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
 				/*
 					boolean checkGrille = true;
 					Valider();
@@ -214,106 +208,103 @@ public class PanelReducteur extends JPanel {
 				list.add(35);
 				list.add(40);
 				list.add(41);*/
-				//list.add(48);
-				
-				Valider();
-				System.out.println(tab1);
+                //list.add(48);
 
-				System.out.println(objectif);
-				ArrayList<Integer> list = new ArrayList<Integer>();
-				for (int i = 0 ; i < tab1.length;i++) {
-					if(tab1[i]!=0) {
-						list.add(tab1[i]);
-					}
+                Valider();
+                System.out.println(tab1);
 
-				}
-				System.out.println(list);
+                System.out.println(objectif);
+                ArrayList<Integer> list = new ArrayList<Integer>();
+                for (int i = 0; i < tab1.length; i++) {
+                    if (tab1[i] != 0) {
+                        list.add(tab1[i]);
+                    }
 
-				
-				SystemReducteur tf = new SystemReducteur(list.size(),5,4);
-				TreeMap<Integer, ArrayList<Integer>> listFinal = new TreeMap<Integer, ArrayList<Integer>>();
-				listFinal = SysReducteur( list, tf );
-				System.out.println(listFinal);
-			
-			}	
-			
-			
-		});
-		
-		
-		
-		add(btnValider);
-		
-		
-		
-	}
-	
-	public void Valider()
-	{
-        	//On stockes les valeurs entr�es dans le premier tableau
-		if(num1.getText().equals("") || Integer.valueOf(num1.getText()).intValue() < 1 || Integer.valueOf(num1.getText()).intValue() > 49) {
-			tab1[0] = 0;
-		} else {
-			tab1[0] = Integer.valueOf(num1.getText()).intValue();
-		}
-		if(num2.getText().equals("") || Integer.valueOf(num2.getText()).intValue() < 1 || Integer.valueOf(num2.getText()).intValue() > 49) {
-			tab1[1] = 0;
-		} else {
-			tab1[1] = Integer.valueOf(num2.getText()).intValue();
-		}
-		if(num3.getText().equals("") || Integer.valueOf(num3.getText()).intValue() < 1 || Integer.valueOf(num3.getText()).intValue() > 49) {
-			tab1[2] = 0;
-		} else {
-			tab1[2] = Integer.valueOf(num3.getText()).intValue();
-		}
-		if(num4.getText().equals("") || Integer.valueOf(num4.getText()).intValue() < 1 || Integer.valueOf(num4.getText()).intValue() > 49) {
-			tab1[3] = 0;
-		} else {
-			tab1[3] = Integer.valueOf(num4.getText()).intValue();
-		}
-		if(num5.getText().equals("") || Integer.valueOf(num5.getText()).intValue() < 1 || Integer.valueOf(num5.getText()).intValue() > 49) {
-			tab1[4] = 0;
-		} else {
-			tab1[4] = Integer.valueOf(num5.getText()).intValue();
-		}
-		if(num6.getText().equals("") || Integer.valueOf(num6.getText()).intValue() < 1 || Integer.valueOf(num6.getText()).intValue() > 49) {
-			tab1[5] = 0;
-		} else {
-			tab1[5] = Integer.valueOf(num6.getText()).intValue();
-		}
-		
-		if(num7.getText().equals("") || Integer.valueOf(num7.getText()).intValue() < 1 || Integer.valueOf(num7.getText()).intValue() > 49) {
+                }
+                System.out.println(list);
+
+
+                SystemReducteur tf = new SystemReducteur(list.size(), 5, 4);
+                TreeMap<Integer, ArrayList<Integer>> listFinal = new TreeMap<Integer, ArrayList<Integer>>();
+                listFinal = SysReducteur(list, tf);
+                System.out.println(listFinal);
+
+            }
+
+
+        });
+
+
+        add(btnValider);
+
+
+    }
+
+    public void Valider() {
+        //On stockes les valeurs entr�es dans le premier tableau
+        if (num1.getText().equals("") || Integer.valueOf(num1.getText()).intValue() < 1 || Integer.valueOf(num1.getText()).intValue() > 49) {
+            tab1[0] = 0;
+        } else {
+            tab1[0] = Integer.valueOf(num1.getText()).intValue();
+        }
+        if (num2.getText().equals("") || Integer.valueOf(num2.getText()).intValue() < 1 || Integer.valueOf(num2.getText()).intValue() > 49) {
+            tab1[1] = 0;
+        } else {
+            tab1[1] = Integer.valueOf(num2.getText()).intValue();
+        }
+        if (num3.getText().equals("") || Integer.valueOf(num3.getText()).intValue() < 1 || Integer.valueOf(num3.getText()).intValue() > 49) {
+            tab1[2] = 0;
+        } else {
+            tab1[2] = Integer.valueOf(num3.getText()).intValue();
+        }
+        if (num4.getText().equals("") || Integer.valueOf(num4.getText()).intValue() < 1 || Integer.valueOf(num4.getText()).intValue() > 49) {
+            tab1[3] = 0;
+        } else {
+            tab1[3] = Integer.valueOf(num4.getText()).intValue();
+        }
+        if (num5.getText().equals("") || Integer.valueOf(num5.getText()).intValue() < 1 || Integer.valueOf(num5.getText()).intValue() > 49) {
+            tab1[4] = 0;
+        } else {
+            tab1[4] = Integer.valueOf(num5.getText()).intValue();
+        }
+        if (num6.getText().equals("") || Integer.valueOf(num6.getText()).intValue() < 1 || Integer.valueOf(num6.getText()).intValue() > 49) {
+            tab1[5] = 0;
+        } else {
+            tab1[5] = Integer.valueOf(num6.getText()).intValue();
+        }
+
+        if (num7.getText().equals("") || Integer.valueOf(num7.getText()).intValue() < 1 || Integer.valueOf(num7.getText()).intValue() > 49) {
             tab1[6] = 0;
         } else {
             tab1[6] = Integer.valueOf(num7.getText()).intValue();
         }
-        if(num8.getText().equals("") || Integer.valueOf(num8.getText()).intValue() < 1 || Integer.valueOf(num8.getText()).intValue() > 49) {
+        if (num8.getText().equals("") || Integer.valueOf(num8.getText()).intValue() < 1 || Integer.valueOf(num8.getText()).intValue() > 49) {
             tab1[7] = 0;
         } else {
             tab1[7] = Integer.valueOf(num8.getText()).intValue();
         }
-        if(num9.getText().equals("") || Integer.valueOf(num9.getText()).intValue() < 1 || Integer.valueOf(num9.getText()).intValue() > 49) {
+        if (num9.getText().equals("") || Integer.valueOf(num9.getText()).intValue() < 1 || Integer.valueOf(num9.getText()).intValue() > 49) {
             tab1[8] = 0;
         } else {
             tab1[8] = Integer.valueOf(num9.getText()).intValue();
         }
-        if(num10.getText().equals("") || Integer.valueOf(num10.getText()).intValue() < 1 || Integer.valueOf(num10.getText()).intValue() > 49) {
+        if (num10.getText().equals("") || Integer.valueOf(num10.getText()).intValue() < 1 || Integer.valueOf(num10.getText()).intValue() > 49) {
             tab1[9] = 0;
         } else {
             tab1[9] = Integer.valueOf(num10.getText()).intValue();
         }
-        if(num11.getText().equals("") || Integer.valueOf(num11.getText()).intValue() < 1 || Integer.valueOf(num11.getText()).intValue() > 49) {
+        if (num11.getText().equals("") || Integer.valueOf(num11.getText()).intValue() < 1 || Integer.valueOf(num11.getText()).intValue() > 49) {
             tab1[10] = 0;
         } else {
             tab1[10] = Integer.valueOf(num11.getText()).intValue();
         }
-        if(num12.getText().equals("") || Integer.valueOf(num12.getText()).intValue() < 1 || Integer.valueOf(num12.getText()).intValue() > 49) {
+        if (num12.getText().equals("") || Integer.valueOf(num12.getText()).intValue() < 1 || Integer.valueOf(num12.getText()).intValue() > 49) {
             tab1[11] = 0;
         } else {
             tab1[11] = Integer.valueOf(num12.getText()).intValue();
         }
-		//garantie = grpGarantie.getSelection().getActionCommand();
-		objectif = Integer.parseInt(grpObjectif.getSelection().getActionCommand());
+        //garantie = grpGarantie.getSelection().getActionCommand();
+        objectif = Integer.parseInt(grpObjectif.getSelection().getActionCommand());
 	
 	
 		/*if(num8.getText().equals("") || Integer.valueOf(num8.getText()).intValue() < 1 || Integer.valueOf(num8.getText()).intValue() > 49) {
@@ -326,56 +317,55 @@ public class PanelReducteur extends JPanel {
 		} else {
 			tab1[8] = Integer.valueOf(num9.getText()).intValue();
 		}*/
-		
 
-	}
-	
-	public static TreeMap<Integer, ArrayList<Integer>> SysReducteur(ArrayList<Integer> list, SystemReducteur tf ){
-		TreeMap<Integer, ArrayList<Integer>> listeF = new TreeMap<Integer, ArrayList<Integer>>();
-		//SystemReducteur tf = new SystemReducteur(list.size(),6,K);
-		ArrayList<Integer> listeEmplacement = new ArrayList<Integer>();
-		
-		// calcul des solutions et conserve la meilleure
-		int[] bestsolution = null;
-		for(int loop=0;loop<100;loop++) {
-			int[] solutions = tf.computeSolutions();
-			if (bestsolution==null || solutions.length<bestsolution.length) { 
-				System.out.println("found a solution of size:"+solutions.length);
-				bestsolution=solutions;
-			}
-		}
-		
-		int j = 0;
-		// affiche la meilleure solution
-		for(int solution : bestsolution) {
-			ArrayList<Integer> listeCombi = new ArrayList<Integer>();
-			
-			listeEmplacement= Cnp.combi(solution);
-			
-			j++;
-			
-			//System.out.println("new one" + listeCombi + " " +listeEmplacement + " "+ j + " "+ listeF);
-			for(int i = 0; i<= 4 ; i++) {
-				int tmp = listeEmplacement.get(i);
-				//System.out.println(tmp);
-				
-				listeCombi.add(list.get(tmp-1));
-				
-				
-			}
-			//System.out.println(listeCombi);
-			listeF.put(j, listeCombi);
-			//System.out.println("listeF " + listeF);
-			
-		}
-		//System.out.println(listeF);
-		
-		return listeF;
 
-	}
-	
-	
-	
+    }
+
+    public static TreeMap<Integer, ArrayList<Integer>> SysReducteur(ArrayList<Integer> list, SystemReducteur tf) {
+        TreeMap<Integer, ArrayList<Integer>> listeF = new TreeMap<Integer, ArrayList<Integer>>();
+        //SystemReducteur tf = new SystemReducteur(list.size(),6,K);
+        ArrayList<Integer> listeEmplacement = new ArrayList<Integer>();
+
+        // calcul des solutions et conserve la meilleure
+        int[] bestsolution = null;
+        for (int loop = 0; loop < 100; loop++) {
+            int[] solutions = tf.computeSolutions();
+            if (bestsolution == null || solutions.length < bestsolution.length) {
+                System.out.println("found a solution of size:" + solutions.length);
+                bestsolution = solutions;
+            }
+        }
+
+        int j = 0;
+        // affiche la meilleure solution
+        for (int solution : bestsolution) {
+            ArrayList<Integer> listeCombi = new ArrayList<Integer>();
+
+            listeEmplacement = Cnp.combi(solution);
+
+            j++;
+
+            //System.out.println("new one" + listeCombi + " " +listeEmplacement + " "+ j + " "+ listeF);
+            for (int i = 0; i <= 4; i++) {
+                int tmp = listeEmplacement.get(i);
+                //System.out.println(tmp);
+
+                listeCombi.add(list.get(tmp - 1));
+
+
+            }
+            //System.out.println(listeCombi);
+            listeF.put(j, listeCombi);
+            //System.out.println("listeF " + listeF);
+
+        }
+        //System.out.println(listeF);
+
+        return listeF;
+
+    }
+
+
 }
 
 

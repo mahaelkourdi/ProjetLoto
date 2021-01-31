@@ -18,47 +18,44 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.ActionEvent;
 
-public class PanelHome extends JPanel implements ActionListener{
-	
-	private JButton btnJouer ;
-	private JPanel panelJouer;
-	
-	/**
-	 * Create the panel.
-	 */
-	public PanelHome() {
-		panelJouer = new PanelJouer();
-		panelJouer.setBounds(0, 0, 700, 600);
-		panelJouer.setVisible(false);
-		
-		
-		
-		setBounds(0,0,590,300);
-		setLayout(null);
-		
-		btnJouer = new JButton("Cliquer sur jouer");
-		btnJouer.setBounds(166, 104, 266, 29);
-		
-		add(btnJouer);
-		add(panelJouer);
-		btnJouer.addActionListener(this );
-	
-	}
-	
+public class PanelHome extends JPanel implements ActionListener {
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		
-		if (e.getSource() == btnJouer) {
-			btnJouer.setVisible(false);
-			panelJouer.setVisible(true);
-			
-		}
-	
-		
-	}
-	
-	
+    private final JButton btnJouer;
+    private final JPanel panelJouer;
+
+    /**
+     * Create the panel.
+     */
+    public PanelHome() {
+        panelJouer = new PanelJouer();
+        panelJouer.setBounds(0, 0, 700, 600);
+        panelJouer.setVisible(false);
+
+
+        setBounds(0, 0, 590, 300);
+        setLayout(null);
+
+        btnJouer = new JButton("Cliquer sur jouer");
+        btnJouer.setBounds(166, 104, 266, 29);
+
+        add(btnJouer);
+        add(panelJouer);
+        btnJouer.addActionListener(this);
+
+    }
+
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
+        if (e.getSource() == btnJouer) {
+            btnJouer.setVisible(false);
+            panelJouer.setVisible(true);
+
+        }
+
+
+    }
 
 
 }
