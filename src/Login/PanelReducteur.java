@@ -168,66 +168,55 @@ public class PanelReducteur extends JPanel {
 
         btnValider.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-				/*
-					boolean checkGrille = true;
-					Valider();
-					for(int i =0; i<11 ; i++) {
-						System.out.println(tab1[i]);
-						checkGrille = true;
-						if (tab1[i]==0) {
-							JOptionPane.showMessageDialog(null, "Saisir au moins 6 numéros",
-							      "Hey!", JOptionPane.ERROR_MESSAGE);
-							checkGrille = false;
-							break;
-						}
-					}
-					
-					
-					if(checkGrille) {
-						
-						System.out.println("Grille ok :)");
-						JOptionPane.showMessageDialog(null, "Grille ajoutée avec succès");
-						
-						
-					} else {
-						// Ne rien faire
-						System.out.println("Grille non valide :)");
-					}
-					*/
-					
-					
-					
-			
-				
-				/*list.add(tab[0]);
-				list.add(tab[1]);
-				list.add(10);
-				list.add(22);
-				list.add(29);
-				list.add(32);
-				list.add(35);
-				list.add(40);
-				list.add(41);*/
-                //list.add(48);
 
+                boolean checkGrille = true;
                 Valider();
-                System.out.println(tab1);
-
-                System.out.println(objectif);
-                ArrayList<Integer> list = new ArrayList<Integer>();
-                for (int i = 0; i < tab1.length; i++) {
+                int cpt = 0;
+                for(int i =0; i < tab1.length ; i++) {
+                    checkGrille = true;
+                    /*if (tab1[i]==0) {
+                        JOptionPane.showMessageDialog(null, "Saisir au moins 6 numéros",
+                              "Hey!", JOptionPane.ERROR_MESSAGE);
+                        checkGrille = false;
+                    }*/
                     if (tab1[i] != 0) {
-                        list.add(tab1[i]);
+                        cpt++;
+                    }
+                }
+                if (cpt < 6) {
+                    JOptionPane.showMessageDialog(null, "Saisir au moins 6 numéros",
+                            "Hey!", JOptionPane.ERROR_MESSAGE);
+                    checkGrille = false;
+                }
+                if (objectif == 0) {
+                    JOptionPane.showMessageDialog(null, "Choisir le nombre de bons numéros souhaité",
+                            "Hey!", JOptionPane.ERROR_MESSAGE);
+                    checkGrille = false;
+                }
+
+
+                if(checkGrille) {
+                    System.out.println("Grille ok :)");
+                    ArrayList<Integer> list = new ArrayList<Integer>();
+                    for (int i = 0; i < tab1.length; i++) {
+                        if (tab1[i] != 0) {
+                            list.add(tab1[i]);
+                        }
+
                     }
 
+                    SystemReducteur tf = new SystemReducteur(list.size(), 5, 4);
+                    TreeMap<Integer, ArrayList<Integer>> listFinal = new TreeMap<Integer, ArrayList<Integer>>();
+                    listFinal = SysReducteur(list, tf);
+                    System.out.println(listFinal);
+
+                    JOptionPane.showMessageDialog(null, "Voici vos résultats !");
+
+
+                } else {
+                    // Ne rien faire
+                    System.out.println("Grille non valide :)");
                 }
-                System.out.println(list);
-
-
-                SystemReducteur tf = new SystemReducteur(list.size(), 5, 4);
-                TreeMap<Integer, ArrayList<Integer>> listFinal = new TreeMap<Integer, ArrayList<Integer>>();
-                listFinal = SysReducteur(list, tf);
-                System.out.println(listFinal);
 
             }
 
@@ -240,85 +229,85 @@ public class PanelReducteur extends JPanel {
 
     }
 
+    private boolean StringOrNot(String s) {
+        boolean x = false;
+        for(int i = 0; i < s.length(); i++) {
+            if(s.charAt(i) == '0' || s.charAt(i) == '1' || s.charAt(i) == '2' || s.charAt(i) == '3' || s.charAt(i) == '4' || s.charAt(i) == '5' || s.charAt(i) == '6' || s.charAt(i) == '7' || s.charAt(i) == '8' || s.charAt(i) == '9') {
+
+            } else x = true;
+        }
+        return x;
+    }
+
     public void Valider() {
         //On stockes les valeurs entr�es dans le premier tableau
-        if (num1.getText().equals("") || Integer.valueOf(num1.getText()).intValue() < 1 || Integer.valueOf(num1.getText()).intValue() > 49) {
+        if (StringOrNot(num1.getText()) || num1.getText().equals("") || Integer.valueOf(num1.getText()).intValue() < 1 || Integer.valueOf(num1.getText()).intValue() > 49) {
             tab1[0] = 0;
         } else {
             tab1[0] = Integer.valueOf(num1.getText()).intValue();
         }
-        if (num2.getText().equals("") || Integer.valueOf(num2.getText()).intValue() < 1 || Integer.valueOf(num2.getText()).intValue() > 49) {
+        if (StringOrNot(num2.getText()) || num2.getText().equals("") || Integer.valueOf(num2.getText()).intValue() < 1 || Integer.valueOf(num2.getText()).intValue() > 49) {
             tab1[1] = 0;
         } else {
             tab1[1] = Integer.valueOf(num2.getText()).intValue();
         }
-        if (num3.getText().equals("") || Integer.valueOf(num3.getText()).intValue() < 1 || Integer.valueOf(num3.getText()).intValue() > 49) {
+        if (StringOrNot(num3.getText()) || num3.getText().equals("") || Integer.valueOf(num3.getText()).intValue() < 1 || Integer.valueOf(num3.getText()).intValue() > 49) {
             tab1[2] = 0;
         } else {
             tab1[2] = Integer.valueOf(num3.getText()).intValue();
         }
-        if (num4.getText().equals("") || Integer.valueOf(num4.getText()).intValue() < 1 || Integer.valueOf(num4.getText()).intValue() > 49) {
+        if (StringOrNot(num4.getText()) || num4.getText().equals("") || Integer.valueOf(num4.getText()).intValue() < 1 || Integer.valueOf(num4.getText()).intValue() > 49) {
             tab1[3] = 0;
         } else {
             tab1[3] = Integer.valueOf(num4.getText()).intValue();
         }
-        if (num5.getText().equals("") || Integer.valueOf(num5.getText()).intValue() < 1 || Integer.valueOf(num5.getText()).intValue() > 49) {
+        if (StringOrNot(num5.getText()) || num5.getText().equals("") || Integer.valueOf(num5.getText()).intValue() < 1 || Integer.valueOf(num5.getText()).intValue() > 49) {
             tab1[4] = 0;
         } else {
             tab1[4] = Integer.valueOf(num5.getText()).intValue();
         }
-        if (num6.getText().equals("") || Integer.valueOf(num6.getText()).intValue() < 1 || Integer.valueOf(num6.getText()).intValue() > 49) {
+        if (StringOrNot(num6.getText()) || num6.getText().equals("") || Integer.valueOf(num6.getText()).intValue() < 1 || Integer.valueOf(num6.getText()).intValue() > 49) {
             tab1[5] = 0;
         } else {
             tab1[5] = Integer.valueOf(num6.getText()).intValue();
         }
 
-        if (num7.getText().equals("") || Integer.valueOf(num7.getText()).intValue() < 1 || Integer.valueOf(num7.getText()).intValue() > 49) {
+        if (StringOrNot(num7.getText()) || num7.getText().equals("") || Integer.valueOf(num7.getText()).intValue() < 1 || Integer.valueOf(num7.getText()).intValue() > 49) {
             tab1[6] = 0;
         } else {
             tab1[6] = Integer.valueOf(num7.getText()).intValue();
         }
-        if (num8.getText().equals("") || Integer.valueOf(num8.getText()).intValue() < 1 || Integer.valueOf(num8.getText()).intValue() > 49) {
+        if (StringOrNot(num8.getText()) || num8.getText().equals("") || Integer.valueOf(num8.getText()).intValue() < 1 || Integer.valueOf(num8.getText()).intValue() > 49) {
             tab1[7] = 0;
         } else {
             tab1[7] = Integer.valueOf(num8.getText()).intValue();
         }
-        if (num9.getText().equals("") || Integer.valueOf(num9.getText()).intValue() < 1 || Integer.valueOf(num9.getText()).intValue() > 49) {
+        if (StringOrNot(num9.getText()) || num9.getText().equals("") || Integer.valueOf(num9.getText()).intValue() < 1 || Integer.valueOf(num9.getText()).intValue() > 49) {
             tab1[8] = 0;
         } else {
             tab1[8] = Integer.valueOf(num9.getText()).intValue();
         }
-        if (num10.getText().equals("") || Integer.valueOf(num10.getText()).intValue() < 1 || Integer.valueOf(num10.getText()).intValue() > 49) {
+        if (StringOrNot(num10.getText()) || num10.getText().equals("") || Integer.valueOf(num10.getText()).intValue() < 1 || Integer.valueOf(num10.getText()).intValue() > 49) {
             tab1[9] = 0;
         } else {
             tab1[9] = Integer.valueOf(num10.getText()).intValue();
         }
-        if (num11.getText().equals("") || Integer.valueOf(num11.getText()).intValue() < 1 || Integer.valueOf(num11.getText()).intValue() > 49) {
+        if (StringOrNot(num11.getText()) || num11.getText().equals("") || Integer.valueOf(num11.getText()).intValue() < 1 || Integer.valueOf(num11.getText()).intValue() > 49) {
             tab1[10] = 0;
         } else {
             tab1[10] = Integer.valueOf(num11.getText()).intValue();
         }
-        if (num12.getText().equals("") || Integer.valueOf(num12.getText()).intValue() < 1 || Integer.valueOf(num12.getText()).intValue() > 49) {
+        if (StringOrNot(num12.getText()) || num12.getText().equals("") || Integer.valueOf(num12.getText()).intValue() < 1 || Integer.valueOf(num12.getText()).intValue() > 49) {
             tab1[11] = 0;
         } else {
             tab1[11] = Integer.valueOf(num12.getText()).intValue();
         }
         //garantie = grpGarantie.getSelection().getActionCommand();
-        objectif = Integer.parseInt(grpObjectif.getSelection().getActionCommand());
-	
-	
-		/*if(num8.getText().equals("") || Integer.valueOf(num8.getText()).intValue() < 1 || Integer.valueOf(num8.getText()).intValue() > 49) {
-			tab1[7] = 0;
-		} else {
-			tab1[7] = Integer.valueOf(num8.getText()).intValue();
-		}
-		if(num9.getText().equals("") || Integer.valueOf(num9.getText()).intValue() < 1 || Integer.valueOf(num9.getText()).intValue() > 49) {
-			tab1[8] = 0;
-		} else {
-			tab1[8] = Integer.valueOf(num9.getText()).intValue();
-		}*/
-
-
+        if (grpObjectif.getSelection() == null) {
+            objectif = 0;
+        } else {
+            objectif = Integer.parseInt(grpObjectif.getSelection().getActionCommand());
+        }
     }
 
     public static TreeMap<Integer, ArrayList<Integer>> SysReducteur(ArrayList<Integer> list, SystemReducteur tf) {
